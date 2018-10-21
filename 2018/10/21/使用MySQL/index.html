@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MySQL使用MySQL###连接数据库需要的信息  主机名（计算机名）——如果连接到本地服务器，为localhost； 端口（如果使用默认端口3306之外的端口）； 用户名和用户口令 选择数据库 显示数据库列表 1SHOW DATABASES;  使用数据库 1USE TEST；   “TEST”数据库名  获取数据库内表的列表1SHOW TABLES     ###显示表列   1SHOW C">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用MySQL">
+<meta property="og:url" content="http://yoursite.com/2018/10/21/使用MySQL/index.html">
+<meta property="og:site_name" content="Enter">
+<meta property="og:description" content="MySQL使用MySQL###连接数据库需要的信息  主机名（计算机名）——如果连接到本地服务器，为localhost； 端口（如果使用默认端口3306之外的端口）； 用户名和用户口令 选择数据库 显示数据库列表 1SHOW DATABASES;  使用数据库 1USE TEST；   “TEST”数据库名  获取数据库内表的列表1SHOW TABLES     ###显示表列   1SHOW C">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-21T12:39:34.609Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用MySQL">
+<meta name="twitter:description" content="MySQL使用MySQL###连接数据库需要的信息  主机名（计算机名）——如果连接到本地服务器，为localhost； 端口（如果使用默认端口3306之外的端口）； 用户名和用户口令 选择数据库 显示数据库列表 1SHOW DATABASES;  使用数据库 1USE TEST；   “TEST”数据库名  获取数据库内表的列表1SHOW TABLES     ###显示表列   1SHOW C">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: "",
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/21/使用MySQL/"/>
+
+
+
+
+
+  <title>使用MySQL | Enter</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container  page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Enter</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/使用MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Enter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enter">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用MySQL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T20:37:28+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="使用MySQL"><a href="#使用MySQL" class="headerlink" title="使用MySQL"></a>使用MySQL</h2><p>###连接数据库需要的信息</p>
+<ol>
+<li>主机名（计算机名）——如果连接到本地服务器，为localhost；</li>
+<li>端口（如果使用默认端口3306之外的端口）；</li>
+<li><p>用户名和用户口令</p>
+<h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><ol>
+<li><p>显示数据库列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE TEST；</span><br></pre></td></tr></table></figure>
+<p>  “TEST”数据库名 </p>
+<h3 id="获取数据库内表的列表"><a href="#获取数据库内表的列表" class="headerlink" title="获取数据库内表的列表"></a>获取数据库内表的列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<p>###显示表列<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM customers;</span><br></pre></td></tr></table></figure></p>
+<p>##检索数据</p>
+<h3 id="检索单个列"><a href="#检索单个列" class="headerlink" title="检索单个列"></a>检索单个列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   SELECT prod_name FROM products;</span><br><span class="line">//从products表中检索出一个名为“prod_name”的列</span><br></pre></td></tr></table></figure>
+<p>###检索多个列<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   SELECT prod_id,prod_name,prod_price FROM products;</span><br><span class="line">//从prodcuts选择三个指定列的值</span><br></pre></td></tr></table></figure></p>
+<p>###检索所有列<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   SELECT * FROM products;</span><br><span class="line">//会降低检索和应用程序的性能</span><br></pre></td></tr></table></figure></p>
+<p>###检索不同的行<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT ven_id FROM products;</span><br><span class="line">//检索products产品的所有供应商id</span><br></pre></td></tr></table></figure></p>
+<p>###限制显示结果<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name FROM products</span><br><span class="line">LIMIT 5;</span><br><span class="line">//返回prod_name 列下前5行的值</span><br></pre></td></tr></table></figure></p>
+<pre><code>`LIMIT 5,4==LIMIT 4 OFFSET 5==从第五行开始取，取连续四行值`                                              注：行号从0开始
+</code></pre><h3 id="使用完全限定的表名"><a href="#使用完全限定的表名" class="headerlink" title="使用完全限定的表名"></a>使用完全限定的表名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT products.prod_name FROM test.products;</span><br><span class="line">//指定表products来自数据库test，列prod_name来自表products</span><br></pre></td></tr></table></figure>
+<p>##排序检索数据</p>
+<p>###排序数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name</span><br><span class="line">FROM products</span><br><span class="line">ORDER BY prod_name;</span><br><span class="line">//对显示的prod_name列按照prod_name列值的字母顺序排序</span><br></pre></td></tr></table></figure>
+<p>在给出ORDER BY子句时，应保证它位于FROM子句之后。<br>这个子句必须是SELECT语句中的最后一条子句。<br>如果使用LIMIT，它必须位于ORDER BY之后。</p>
+<p>ORDER BY 语句子句也可以使用非检索的列的数据排序<br>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name</span><br><span class="line">FROM products</span><br><span class="line">ORDER BY prod_price;</span><br></pre></td></tr></table></figure>
+<p>###按多个列排序<br>即多级排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_price,prod_name</span><br><span class="line">FROM products</span><br><span class="line">ORDER BY prod_price,prod_name;</span><br><span class="line">//先按照prod_price排序，prod_price值相同时按照prod_name值排序</span><br></pre></td></tr></table></figure></p>
+<p>###指定排序方向<br>排序默认按照升序排列，可以通过DESC关键字设置为降序排列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_price,prod_name</span><br><span class="line">FROM products</span><br><span class="line">ORDER BY prod_price DESC;</span><br><span class="line">//按价格以降序排列产品</span><br></pre></td></tr></table></figure></p>
+<p>DESC关键字只对直接位于其前面的列名有效。因此当多级排序时，若都需降序排序，需要在每个列名后面加上DESC关键字。<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_price,prod_name</span><br><span class="line">FROM products</span><br><span class="line">ORDER BY prod_price DESC ,prod_name DESC;</span><br><span class="line">//先按照prod_price排序，prod_price值相同时按照prod_name值排序</span><br></pre></td></tr></table></figure></p>
+<p>##过滤数据</p>
+<p>###使用WHERE子句<br>返回符合WHERE子句要求的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">where prod_price = 2.50;</span><br></pre></td></tr></table></figure></p>
+<p>###WHERE子句操作符</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>在指定的两个值之间</td>
+</tr>
+</tbody>
+</table>
+<p>###检查单个值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">where prod_price &lt; 10;</span><br><span class="line">//返回价格小于10的产品名字和价格</span><br></pre></td></tr></table></figure></p>
+<p>###不匹配检查<br>通过&lt;&gt; 或 ！= 操作符实现</p>
+<p>###范围值检查<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE prod_price BETWEEN 5 AND 10&apos;</span><br><span class="line">//返回价格在5-10的商品，包含5，10</span><br></pre></td></tr></table></figure></p>
+<p>###空值检查<br>用来检查具有NULL值的列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_id</span><br><span class="line">FROM customers</span><br><span class="line">WHERE cust_email IS NULL; </span><br><span class="line">//返回没有电子邮件地址的顾客的id</span><br></pre></td></tr></table></figure></p>
+<p>##数据过滤</p>
+<p>###组合使用WHERE子句<br>通过AND子句或OR子句实现</p>
+<p>###AND操作符<br>AND 检索满足所有给定条件的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_price,prod_name</span><br><span class="line">FROM products</span><br><span class="line">WHERE vend_id=1003 AND prod_price &lt;= 10;</span><br><span class="line">//返回由供应商1003制造且价格小于等于10的商品的id，价格，名称</span><br></pre></td></tr></table></figure></p>
+<p>可以通过多个AND子句实现多个过滤条件的组合</p>
+<p>###OR操作符<br>OR 返回匹配任一条件的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE vend_id=1002 OR vend_id=1003;</span><br><span class="line">//返回由供应商1002或供应商1003提供的商品的名字和价格</span><br></pre></td></tr></table></figure></p>
+<p>###计算次序<br>WHERE子句可以使用任意数目的AND子句和OR子句，并且将它们组合。<br>通过（）明确计算次序，语法规则和C一致。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE (vend_id= 1002 OR vend_id= 1003)AND prod_price&gt;=10;</span><br><span class="line">//返回价格为10及以上，且供应商为1002或1003的所有商品</span><br></pre></td></tr></table></figure></p>
+<p>###IN操作符<br>IN操作符用来指定条件范围，范围中的每个条件都可以进行匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE  vend_id   IN  (1002,1003)</span><br><span class="line">ORDER BY prod_name;</span><br><span class="line">//返回由供应商1002和1003制造的所有产品</span><br></pre></td></tr></table></figure></p>
+<p>###NOT操作符<br>WHERE子句中用来否定后跟条件的关键字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name,prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE vend_id  NOT  IN  (1002,1003)</span><br><span class="line">ORDER BY prod_name;</span><br><span class="line">//返回除1002和1003之外的所有供应商制造的产品</span><br></pre></td></tr></table></figure></p>
+<p>##用通配符进行过滤</p>
+<p>###LIKE操作符<br><strong>通配符</strong>：用来匹配值的一部分的特殊字符<br><strong>搜索模式</strong>：由字面值，通配符或两者组合构成的搜索条件</p>
+<p>###百分号（%）通配符<br><strong>%</strong>：表示任何字符出现任何次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_name</span><br><span class="line">FROM products</span><br><span class="line">WHERE prod_name LIKE &apos;jet%&apos;;</span><br><span class="line">//返回所有以词“jet”开头的产品</span><br></pre></td></tr></table></figure>
+<p><strong>例</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;%jet%&apos;  // 返回所有包含&apos;jet&apos;的值</span><br><span class="line">&apos;s%e&apos;    //返回所有以s开头，以e结尾的值</span><br></pre></td></tr></table></figure>
+<p><strong>注</strong></p>
+<ol>
+<li>%不可以匹配NULL    </li>
+<li>%匹配时可以区分大小写，默认不区分</li>
+<li>注意尾空格，如’%test’,当某值以‘test’结尾，但后面有若干个空格时，该值不返回</li>
+</ol>
+<p>###下划线（_）通配符<br>下划线通配符用途与百分号通配符一致，但只能匹配单个字符（可以通过多个__连用，实现多个字符匹配）。<br><strong>如</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_id,prod_name</span><br><span class="line">FROM  products</span><br><span class="line">WHERE  prod_id  LIKE   &apos;__1000&apos;;</span><br><span class="line">//返回prod_id长度为6，且后四位为’1000‘的值</span><br></pre></td></tr></table></figure>
+<p>###使用通配符的技巧</p>
+<ol>
+<li>不要过度使用通配符。如果其他操作符能达到，就不要用通配符。</li>
+<li>除非绝对有必要，否则不要把通配符放到搜索模式的开始处。（更加耗时）</li>
+<li>仔细注意统配符的位置</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/13/Tickets HDU - 1260/" rel="next" title="Tickets HDU - 1260">
+                <i class="fa fa-chevron-left"></i> Tickets HDU - 1260
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Enter" />
+            
+              <p class="site-author-name" itemprop="name">Enter</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用MySQL"><span class="nav-number">1.1.</span> <span class="nav-text">使用MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择数据库"><span class="nav-number">1.1.1.</span> <span class="nav-text">选择数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据库内表的列表"><span class="nav-number">1.1.2.</span> <span class="nav-text">获取数据库内表的列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索单个列"><span class="nav-number">1.1.3.</span> <span class="nav-text">检索单个列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用完全限定的表名"><span class="nav-number">1.1.4.</span> <span class="nav-text">使用完全限定的表名</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Enter</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
